@@ -1,6 +1,19 @@
-services.k3s.enable = true;
-services.k3s.role = "server";
-services.k3s.extraFlags = toString [
-  # "--kubelet-arg=v=4" # Optionally add additional args to k3s
-];
+{
+  description = "A NixOS configuration for k3s";
 
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+  };
+
+  outputs = { self, nixpkgs, nixos-hardware }: {
+    nixosConfigurations = {
+      my-hostname = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./k3s.nix
+        ];
+      };
+    };
+  };
+}
