@@ -9,7 +9,6 @@
       my-hostname = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./k3s.nix
         ];
       };
     };
