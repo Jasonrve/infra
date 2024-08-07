@@ -5,25 +5,20 @@
 
   outputs = { self, nixpkgs, ... }: {
 
-  nixosSystem:
-      nixpkgs.lib.nixosSystem {
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
           ./k3s.nix
         ];
       };
-  nixosSystem2:
-      nixpkgs.lib.nixosSystem {
+      test = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
         ];
-      };
-
-    nixosConfigurations = {
-      nixos = nixosSystem;
-      test = nixosSystem2;
+      };;
     };
   };
 }
