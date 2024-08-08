@@ -28,7 +28,6 @@
 
     homeConfigurations = {
       desktop = home-manager.lib.homeManagerConfiguration {
-        inherit nixpkgs.legacyPackages.x86_64-linux;
         system = "x86_64-linux";
         modules = [
           ./home.nix
