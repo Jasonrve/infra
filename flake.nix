@@ -31,7 +31,7 @@
         };
       };
 
-      homeConfigurations.vlad = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.jason = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
   
         modules = [
