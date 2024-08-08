@@ -25,10 +25,16 @@
         ];
       };
     };
-
-    homeConfigurations = {
-      desktop = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
+  
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      formatter.${system} = pkgs.alejandra;
+  
+      homeConfigurations.vlad = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+  
         modules = [
           ./home.nix
         ];
