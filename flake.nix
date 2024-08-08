@@ -24,6 +24,9 @@
           ./configuration.nix
         ];
       };
+    };
+
+    homeConfigurations = {
       desktop = home-manager.lib.homeManagerConfiguration {
         system = "x86_64-linux";
         modules = [
